@@ -29,22 +29,30 @@ const FolderTree = ({ onFolderSelect }) => {
   }, []);
 
   const renderFolders = (folderList, parentId = null) => {
-    return folderList
-      .filter(folder => folder.parent_id === parentId)
-      .map(folder => (
-        <div key={folder.id} className="ml-4 folder-item">
-          <div
-            onClick={() => onFolderSelect(folder.id)}
-            className="cursor-pointer flex items-center space-x-2 hover:bg-gray-100 p-2 rounded"
-          >
-            <FaFolder className="text-blue-500" />
-            <span className="text-gray-700">{folder.name}</span>
+    return (
+      <>
+      <div className='w-[200px]'>
+      {
+        folderList
+        .filter(folder => folder.parent_id === parentId)
+        .map(folder => (
+          <div key={folder.id} className="ml-4 folder-item">
+            <div
+              onClick={() => onFolderSelect(folder.id)}
+              className="cursor-pointer flex items-center space-x-2 hover:bg-gray-100 p-2 rounded"
+            >
+              <FaFolder size={20} className="text-blue-500" />
+              <span className="text-gray-700 text-sm">{folder.name}</span>
+            </div>
+            <div className="ml-4">
+              {renderFolders(folderList, folder.id)}
+            </div>
           </div>
-          <div className="ml-4">
-            {renderFolders(folderList, folder.id)}
-          </div>
-        </div>
-      ));
+        ))
+      }
+      </div>
+      </>
+    )
   };
 
   if (loading) {
