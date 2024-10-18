@@ -1,0 +1,20 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+/* src/index.css or your global CSS file */
+
+.folder-tree-container {
+    background-color: #f8f9fa; /* Light background */
+  }
+  
+  .folder-item {
+    margin-bottom: 8px; /* Space between folder items */
+  }
+  
+  .folder-item div:hover {
+    background-color: #e2e8f0; /* Slight blue-gray hover effect */
+    transition: background-color 0.2s ease-in-out; /* Smooth hover transition */
+  }
+  
